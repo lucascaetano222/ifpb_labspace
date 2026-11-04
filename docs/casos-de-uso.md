@@ -1,3 +1,7 @@
+# Casos de Uso – Sistema de Visualização Espacial de Laboratórios (IFPB)
+
+> Requisitos (RF/RNF) e regras de negócio (RN) citados aqui estão definidos em [spec.md](spec.md).
+
 ## UC01 – Cadastrar-se
 
 - **Ator:** Visitante
@@ -200,7 +204,6 @@
 
 - **FA1 – Problema estrutural da sala (passo 1):** a solicitação é vinculada à sala, não a um equipamento.
 - **FE1 – Já existe chamado aberto para o item (passo 3):** o sistema mostra o chamado existente e oferece adicionar uma ocorrência a ele (UC08).
-
 
 ## UC13 – Manter salas
 

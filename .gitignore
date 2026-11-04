@@ -1,0 +1,17 @@
+# Obsidian
+.obsidian/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+instance/
+*.db
+
+# Editores e sistema
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

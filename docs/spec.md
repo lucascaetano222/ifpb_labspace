@@ -1,4 +1,7 @@
-# Projeto: Sistema de Visualização Espacial de Laboratórios (IFPB)
+# Spec – Sistema de Visualização Espacial de Laboratórios (IFPB)
+
+> **O quê** o sistema faz. Para o *porquê*, ver [intent.md](intent.md); para o *como*, ver [plan.md](plan.md). Casos de uso detalhados em [casos-de-uso.md](casos-de-uso.md).
+
 
 ## 1. DEFINIÇÃO DE PERFIS E MATRIZ DE ACESSO (RBAC)
 
@@ -74,7 +77,7 @@
 ### 3.4 Notificações e Processamento em Segundo Plano
 
 - **RF20 - Notificações In-App:** Geração de avisos na interface para abertura, alteração ou resolução de chamados.
-- **RF21 - Fila Assíncrona (Celery/RQ):** Tarefas de disparo de notificações devem rodar em background via fila para não impactar a performance das respostas HTMX.
+- **RF21 - Fila Assíncrona (RQ):** Tarefas de disparo de notificações devem rodar em background via fila para não impactar a performance das respostas HTMX.
 
 ### 3.5 Visualização e Dashboard
 
@@ -91,6 +94,16 @@
 
 - **RNF03 - Stack Tecnológica:** Backend em Flask, templates Jinja2, dinamismo com HTMX e interface Bootstrap 5.
 - **RNF04 - Desacoplamento Patrimonial:** O sistema restringe-se ao mapeamento espacial e operacional, sem controle contábil/patrimonial.
-- **RNF05 - Processamento Assíncrono:** Uso obrigatório de Celery ou RQ com Redis para tarefas pesadas e notificações.
+- **RNF05 - Processamento Assíncrono:** Uso obrigatório de RQ (Redis Queue) com Redis para tarefas pesadas e notificações.
 - **RNF06 - Proporção Espacial e Responsividade:** Manutenção de proporção fiel baseada na escala real com suporte a zoom, pan e adaptação a diferentes tamanhos de tela.
 - **RNF07 - Validação Robusta no Servidor:** Regras de segurança, permissões e tipos de dados validados estritamente no backend em Flask.
+
+## 6. REGRAS DE NEGÓCIO (RN)
+
+Regras transversais referenciadas nos casos de uso ([casos-de-uso.md](casos-de-uso.md)).
+
+- **RN01 - Log de Auditoria:** Toda alteração de status, posição, observação, chamado ou usuário gera um registro imutável com autor, data/hora, estado anterior e novo estado (RF16, RF17).
+- **RN02 - Exclusão Lógica:** Salas, equipamentos, periféricos, ocorrências e chamados nunca são apagados fisicamente; a exclusão marca `deleted_at` e preserva logs e chamados vinculados (RNF01, RNF02).
+- **RN03 - Permissão por Perfil:** Cada ação e transição de status é autorizada no backend conforme a matriz RBAC (seção 1.2) e o estado atual do item; requisições sem permissão retornam HTTP 403 (RF14, RNF07).
+- **RN04 - Envio Assíncrono:** E-mails (confirmação, recuperação de senha) e notificações são enfileirados no RQ e nunca enviados dentro da requisição HTTP (RF21, RNF05).
+- **RN05 - Validação de Imagens:** Imagens aceitas apenas em JPG ou PNG, com no máximo 5MB; fora disso, HTTP 413 (tamanho) ou 400 (formato) (RF12).
