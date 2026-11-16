@@ -14,7 +14,7 @@ Hoje não existe uma visão única de **onde está cada equipamento** nos labora
 
 ## Objetivo
 
-Oferecer uma **planta baixa interativa** de cada laboratório, em escala real, em que cada equipamento aparece com seu status (🟢 operacional, 🟡 em manutenção, 🔴 falha), e um **fluxo de chamados** rastreável do reporte ao fechamento.
+Oferecer uma **planta baixa interativa** de cada laboratório, em escala real, em que cada equipamento aparece com seu status (🟢 operacional, 🟡 em manutenção, 🔴 falha, sempre indicados também por ícone e texto), e um **fluxo de chamados** rastreável do reporte ao fechamento.
 
 ## O que é sucesso
 
@@ -22,7 +22,10 @@ Oferecer uma **planta baixa interativa** de cada laboratório, em escala real, e
 - O Administrador vê todas as pendências numa única fila, sem depender de avisos informais.
 - Todo equipamento tem histórico completo (status, ocorrências, chamados, mudanças de sala), preservado mesmo após exclusão.
 - O status de cada sala pode ser consultado no dashboard sem ir até o laboratório.
+- O sistema pode ser usado por pessoas com daltonismo ou que navegam só pelo teclado.
 
 ## Fora do escopo
 
 - Inventário de software instalado nas máquinas.
+- Controle patrimonial ou contábil (tombamento, valor, depreciação).
+- Avisos de chamado por e-mail, SMS ou aplicativos de mensagem: os avisos são só dentro do sistema; o e-mail serve apenas para assuntos da conta.
