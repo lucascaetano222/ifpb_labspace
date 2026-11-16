@@ -60,12 +60,3 @@ Todas as entidades excluíveis têm `deleted_at` (RN02). As posições ficam em 
 8. **Notificações e fila assíncrona:** UC07 + worker do RQ.
 9. **Gestão de usuários:** UC18.
 10. **Edição em lote:** UC19.
-
-## 5. Decisões tomadas
-
-- **Fila assíncrona: RQ** (em vez de Celery). Mais simples de aprender e configurar, e cobre o que o projeto precisa: e-mails e notificações. Em Windows, o Redis e o worker do RQ rodam via WSL ou Docker.
-
-## 6. Decisões em aberto
-
-- Biblioteca para zoom e pan da planta (ex.: panzoom) ou implementação própria?
-- Editor de texto para observações (RF13): Markdown simples ou editor WYSIWYG leve?
